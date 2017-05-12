@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="start_session">Начать новый сбор</string>
+    <string name="app_name">Сборщик опор</string>
+    <string name="end_session">Завершить сбор</string>
+    <string name="line_seassion">Сбор опор линии</string>
+    <string name="tp_session">Сбор ТП</string>
+    <string name="station_session">Сбор подстанций</string>
+    <string name="send_data">Отправить собранные данные на сервер</string>
+    <string name="gps_accuracy">Погрешность позиционирования:</string>
+    <string name="gps_accuracy_value">недоступно</string>
+</resources>
