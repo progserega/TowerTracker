@@ -40,7 +40,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <TextView
@@ -60,10 +60,18 @@
         </LinearLayout>
 
         <Button
-            android:text="@string/save"
+            android:onClick="saveTower"
+            android:text="@string/saveTower"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button" />
+            android:id="@+id/button"
+            android:layout_weight="0.74" />
+
+        <Button
+            android:text="@string/stopSessionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/stop_session" />
 
     </LinearLayout>
 </RelativeLayout>

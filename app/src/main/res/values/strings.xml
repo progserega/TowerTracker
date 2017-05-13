@@ -14,9 +14,15 @@
     <string name="towerTypeLabel">Tower type</string>
     <string name="wood">wood</string>
     <string name="save">save</string>
+    <string name="enter_line_name_label">Enter line name:</string>
+    <string name="line_name_desc">Name line</string>
+    <string name="next">next</string>
     <string-array name="tower_type">
         <item>wood</item>
         <item>concrete</item>
         <item>metall</item>
     </string-array>
+    <string name="error">Error!</string>
+    <string name="stopSessionButton">save and stop session</string>
+    <string name="saveTower">save tower to line</string>
 </resources>

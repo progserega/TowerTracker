@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".selectSessionType" />
-        <activity android:name=".addTower"></activity>
+        <activity android:name=".addTower" />
+        <activity android:name=".LineName"></activity>
     </application>
 
 </manifest>

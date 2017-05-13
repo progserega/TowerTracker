@@ -49,9 +49,9 @@ public class MainActivity extends AppCompatActivity {
             /*EditText editText = (EditText) findViewById(R.id.edit_message);
             String message = editText.getText().toString();
             intent.putExtra(EXTRA_MESSAGE, message);*/
-        Log.d("stationAddBug()", "2");
+        Log.d("startSession()", "2");
         startActivity(intent);
-        Log.d("stationAddBug()", "3");
+        Log.d("startSession()", "3");
 
     }
 

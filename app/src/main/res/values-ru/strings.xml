@@ -15,4 +15,10 @@
     <string name="towerTypeLabel">Тип опоры</string>
     <string name="wood">деревянная</string>
     <string name="save">Сохранить</string>
+    <string name="enter_line_name_label">Введите имя линии:</string>
+    <string name="line_name_desc">например: ВЛ 0.4 Фидер 5</string>
+    <string name="next">Далее</string>
+    <string name="error">Ошибка!</string>
+    <string name="stopSessionButton">Сохранить опору и завершить сбор опор для линии</string>
+    <string name="saveTower">Сохранить опору в линию</string>
 </resources>

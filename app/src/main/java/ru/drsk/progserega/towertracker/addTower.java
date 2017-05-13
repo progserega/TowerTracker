@@ -11,41 +11,56 @@ import android.view.View;
 import android.widget.EditText;
 
 public class addTower extends AppCompatActivity {
+    private String line_name=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_tower);
+        Intent intent = getIntent();
+        line_name = intent.getStringExtra(LineName.LINE_NAME);
     }
       /**
      * Called when the user clicks the Send button
      */
-    public void stationSaveBug(View view) {
-        Log.d("addStationBug.stationSaveBug()", "start save data");
+    public void saveTower(View view) {
+        Log.d("addTower.saveTower()", "start save data");
 
         // TODO добавить сохранение в базу
         SqliteStorage sqliteStorage = SqliteStorage.getInstance(getApplicationContext());
         if (sqliteStorage==null)
         {
-            Log.e("MainActivity.onCreate()", "sqliteStorage.getInstance() error");
+            Log.e("addTower.saveTower()", "sqliteStorage.getInstance() error");
         }
         EditText editText = (EditText) findViewById(R.id.towerName);
-        String comment = editText.getText().toString();
+        String towerName = editText.getText().toString();
 
-        if (sqliteStorage.add_station_defect(1,1,comment)==true)
+        if(towerName.isEmpty())
         {
-            msbox("message","success save to db!");
+            Log.d("error","Имя опоры не должно быть пустым!");
+            msbox("error","Имя опоры не должно быть пустым!");
+        }
+        else
+        {
+
+            msbox("message","success save '"+towerName+"' to line: '"+line_name+"'");
+/*
+        if (sqliteStorage.add_station_defect(1,1,towerName)==true)
+        {
+            msbox("message","success save '"+towerName+"' to line: '"+line_name+"'");
         }
         else
         {
             msbox("message","Error save to db!");
         }
+*/
 
+            // успешный выход из активности:
+            setResult(Activity.RESULT_OK);
+            Log.d("addTower.saveTower()", "close activity");
+            //finish();
+        }
 
-        // успешный выход из активности:
-        setResult(Activity.RESULT_OK);
-        Log.d("addStationBug.stationSaveBug()", "close activity");
-        //finish();
     }
     private void msbox(String str,String str2)
     {
@@ -54,7 +69,7 @@ public class addTower extends AppCompatActivity {
         dlgAlert.setMessage(str2);
         dlgAlert.setPositiveButton("OK",new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                 finish();
+                // finish();
             }
        });
         dlgAlert.setCancelable(true);
