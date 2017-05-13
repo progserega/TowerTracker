@@ -9,4 +9,14 @@
     <string name="send_data">Send data to server</string>
     <string name="gps_accuracy">GPS accuracy:</string>
     <string name="gps_accuracy_value">not available</string>
+    <string name="line_session">Line session</string>
+    <string name="towerNameLabel">Tower name</string>
+    <string name="towerTypeLabel">Tower type</string>
+    <string name="wood">wood</string>
+    <string name="save">save</string>
+    <string-array name="tower_type">
+        <item>wood</item>
+        <item>concrete</item>
+        <item>metall</item>
+    </string-array>
 </resources>

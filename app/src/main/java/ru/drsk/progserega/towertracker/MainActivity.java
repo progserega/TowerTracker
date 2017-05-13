@@ -1,15 +1,19 @@
 package ru.drsk.progserega.towertracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
+    static Boolean syncActive=false;
+    public SqliteStorage sqliteStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +21,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        sqliteStorage = SqliteStorage.getInstance(getApplicationContext());
+        if (sqliteStorage==null)
+        {
+            Log.e("MainActivity.onCreate()", "sqliteStorage.getInstance() error");
+        }
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,6 +34,25 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+
+    /**
+     * Called when the user clicks the Send button
+     */
+    public void startSession(View view) {
+        Log.d("startSession()", "1");
+
+        // Do something in response to button
+        //Intent intent = new Intent(this, addStationBug.class);
+        Intent intent = new Intent(this, selectSessionType.class);
+            /*EditText editText = (EditText) findViewById(R.id.edit_message);
+            String message = editText.getText().toString();
+            intent.putExtra(EXTRA_MESSAGE, message);*/
+        Log.d("stationAddBug()", "2");
+        startActivity(intent);
+        Log.d("stationAddBug()", "3");
+
     }
 
     @Override

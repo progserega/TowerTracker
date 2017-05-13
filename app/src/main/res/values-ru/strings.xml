@@ -9,4 +9,10 @@
     <string name="send_data">Отправить собранные данные на сервер</string>
     <string name="gps_accuracy">Погрешность позиционирования:</string>
     <string name="gps_accuracy_value">недоступно</string>
+    <string name="line_session">Сбор опор линии</string>
+    <string name="action_settings">Настройки</string>
+    <string name="towerNameLabel">Имя опоры</string>
+    <string name="towerTypeLabel">Тип опоры</string>
+    <string name="wood">деревянная</string>
+    <string name="save">Сохранить</string>
 </resources>
