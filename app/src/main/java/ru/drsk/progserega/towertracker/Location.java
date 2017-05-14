@@ -2,11 +2,13 @@ package ru.drsk.progserega.towertracker;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 /**
@@ -46,14 +48,17 @@ public class Location {
 
             public void onStatusChanged(String provider, int status, Bundle extras) {
                 Log.d("startLocation()","onStatusChanged()");
+                msbox("startLocation()","onStatusChanged()");
             }
 
             public void onProviderEnabled(String provider) {
                 Log.d("startLocation()","onProviderEnabled()");
+                msbox("startLocation()","onProviderEnabled()");
             }
 
             public void onProviderDisabled(String provider) {
                 Log.d("startLocation()","onProviderDisabled()");
+                msbox("startLocation()","onProviderDisabled()");
             }
         };
 
@@ -74,13 +79,28 @@ public class Location {
         } else {
             Log.i("startLocation()", "success permissions!");
             Log.d("startLocation()", "register locationListener");
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+            //locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
         }
     }
 
     private void makeUseOfNewLocation(android.location.Location location) {
         Log.d("makeUseOfNewLocation()", String.valueOf(location));
+        msbox("makeUseOfNewLocation()", String.valueOf(location));
     }
 
-
+    private void msbox(String str,String str2)
+    {
+        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(context);
+        dlgAlert.setTitle(str);
+        dlgAlert.setMessage(str2);
+        dlgAlert.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //   finish();
+            }
+        });
+        dlgAlert.setCancelable(true);
+        dlgAlert.create().show();
+    }
 }
+
