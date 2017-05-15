@@ -76,18 +76,23 @@ public class addTower extends AppCompatActivity implements mLocation.callback {
             time=location.getTime();
             updateLocation(lat,lon,accuracy,ele,time);
 
-            msbox("message","success save '"+towerName+"' ("+lat+","+lon+","+accuracy+") to line: '"+line_name+"'");
-/*
-        if (sqliteStorage.add_station_defect(1,1,towerName)==true)
-        {
-            msbox("message","success save '"+towerName+"' to line: '"+line_name+"'");
-        }
-        else
-        {
-            msbox("message","Error save to db!");
-        }
-*/
+            String tower_material="";
+            int line_voltage=0;
+            String tower_type="";
 
+
+
+            if (sqliteStorage.add_tower(line_name,towerName,lat,lon,ele,time,tower_material,line_voltage,tower_type)==true)
+            {
+                msbox("message","success save '"+towerName+"' to line: '"+line_name+"'");
+            }
+            else
+            {
+                msbox("message","Error save to db!");
+            }
+
+
+           // msbox("message","success save '"+towerName+"' ("+lat+","+lon+","+accuracy+") to line: '"+line_name+"'");
             // успешный выход из активности:
             setResult(Activity.RESULT_OK);
             Log.d("addTower.saveTower()", "close activity");
