@@ -26,4 +26,7 @@
     <string name="accuracy_label">Погрешность позиционирования:</string>
     <string name="not_available">не доступно</string>
     <string name="line_name_label">Имя линии:</string>
+    <string name="location_time_label">Последнее обновление координат:</string>
+    <string name="saveTowerUnavaleble">Сохранение невозможно - дождитесь лучших условий приёма (всё зелёное)</string>
+    <string name="stopSessionButtonWithoutSaveTower">завершить сбор опор</string>
 </resources>

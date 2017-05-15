@@ -5,12 +5,17 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.sql.Time;
+import java.util.Date;
 
 public class addTower extends AppCompatActivity implements mLocation.callback {
     private String line_name=null;
@@ -20,6 +25,7 @@ public class addTower extends AppCompatActivity implements mLocation.callback {
     double accuracy=100000;
     double ele=0;
     long time=0;
+    boolean save_button_state=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +35,15 @@ public class addTower extends AppCompatActivity implements mLocation.callback {
         line_name = intent.getStringExtra(LineName.LINE_NAME);
         TextView tv = (TextView) findViewById(R.id.tower_line_name);
         tv.setText(line_name);
+        Button save = (Button) findViewById(R.id.tower_save_button);
+        save.setEnabled(false);
+
         location = mLocation.getInstance(getApplicationContext());
+        location.registerCallback(this);
         lat=location.getLat();
         lon=location.getLon();
         accuracy=location.getAccuracy();
+        time=location.getTime();
         updateLocation(lat,lon,accuracy,ele,time);
     }
       /**
@@ -86,8 +97,18 @@ public class addTower extends AppCompatActivity implements mLocation.callback {
 
 
     @Override
-    public void updateLocation(double lat, double lon, double accurate, double ele, long time)
+    public void updateLocation(double lat, double lon, double accuracy, double ele, long time)
     {
+        boolean accuracy_state=false;
+        boolean location_state=false;
+        boolean time_state=false;
+        this.lat=lat;
+        this.lon=lon;
+        this.time=time;
+        this.accuracy=accuracy;
+        this.ele=ele;
+        save_button_state=false;
+
         // location:
         String label=lat+", "+lon;
         TextView tv = (TextView) findViewById(R.id.tower_current_location);
@@ -99,6 +120,7 @@ public class addTower extends AppCompatActivity implements mLocation.callback {
         else
         {
             tv.setTextColor(Color.rgb(0,200,0));
+            location_state=true;
         }
         // accuracy:
         label=accuracy+" метров";
@@ -107,6 +129,7 @@ public class addTower extends AppCompatActivity implements mLocation.callback {
         if (accuracy<15)
         {
             tv.setTextColor(Color.rgb(0,200,0));
+            accuracy_state=true;
         }
         else if(accuracy<40)
         {
@@ -116,6 +139,67 @@ public class addTower extends AppCompatActivity implements mLocation.callback {
         {
             tv.setTextColor(Color.rgb(200,0,0));
         }
+        // Time
+        if(time!=0)
+        {
+            Date curDate = new Date();
+            long curUnix = curDate.getTime();
+            long timeDelta=curUnix-time;
+            Log.d("updateLocation()","curDate="+curDate.toString()+" curUnix="+curUnix+" time="+time+" timeDelta="+timeDelta);
+            if (timeDelta<60000)
+            {
+                label=(timeDelta/1000)+" сек. назад";
+            }
+            else if (timeDelta<3600000)
+            {
+                label=(timeDelta/1000/60)+" минут назад";
+            }
+            else if (timeDelta<86400000)
+            {
+                label=(timeDelta/1000/3600)+" часов назад";
+            }
+            else
+            {
+                label="более суток назад";
+            }
+            tv = (TextView) findViewById(R.id.tower_location_time);
+            tv.setText(label);
+            if (timeDelta/1000<15)
+            {
+                tv.setTextColor(Color.rgb(0,200,0));
+                time_state=true;
+            }
+            else if(timeDelta/1000<40)
+            {
+                tv.setTextColor(Color.rgb(200,200,0));
+            }
+            else
+            {
+                tv.setTextColor(Color.rgb(200,0,0));
+            }
+        }
+        // разрешаем сохранение, если местоположение свежее и хорошее:
+        if(location_state&&time_state&&accuracy_state)
+        {
+            // сохранение опоры
+            Button save = (Button) findViewById(R.id.tower_save_button);
+            save.setEnabled(true);
+            save.setText(getResources().getString(R.string.saveTower));
+            // завершение сбора опор линии
+            Button end = (Button) findViewById(R.id.stop_session);
+            end.setText(getResources().getString(R.string.stopSessionButton));
+        }
+        else
+        {
+            // сохранение опоры
+            Button save = (Button) findViewById(R.id.tower_save_button);
+            save.setEnabled(false);
+            save.setText(getResources().getString(R.string.saveTowerUnavaleble));
+            // завершение сбора опор линии
+            Button end = (Button) findViewById(R.id.stop_session);
+            end.setText(getResources().getString(R.string.stopSessionButtonWithoutSaveTower));
+        }
+
     }
     private void msbox(String str,String str2)
     {

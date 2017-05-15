@@ -2,14 +2,12 @@ package ru.drsk.progserega.towertracker;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 /**
@@ -85,17 +83,14 @@ public class mLocation {
 
                 public void onStatusChanged(String provider, int status, Bundle extras) {
                     Log.d("startLocation()", "onStatusChanged()");
-                    msbox("startLocation()", "onStatusChanged()");
                 }
 
                 public void onProviderEnabled(String provider) {
                     Log.d("startLocation()", "onProviderEnabled()");
-                    msbox("startLocation()", "onProviderEnabled()");
                 }
 
                 public void onProviderDisabled(String provider) {
                     Log.d("startLocation()", "onProviderDisabled()");
-                    msbox("startLocation()", "onProviderDisabled()");
                 }
             };
             // Register the listener with the Location Manager to receive location updates
@@ -166,29 +161,12 @@ public class mLocation {
     {
         return accuracy;
     }
-
     public double getLat()
     {
         return lat;
     }
     public double getEle() {return  ele; }
     public long getTime() {return time; }
-
-
-    private void msbox(String str,String str2)
-    {
-        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(context);
-        dlgAlert.setTitle(str);
-        dlgAlert.setMessage(str2);
-        dlgAlert.setPositiveButton("OK",new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                //   finish();
-            }
-        });
-        dlgAlert.setCancelable(true);
-        dlgAlert.create().show();
-    }
-
     public double getLon()
     {
         return lon;

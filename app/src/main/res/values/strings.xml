@@ -30,4 +30,7 @@
     <string name="accuracy_label">Accuracy:</string>
     <string name="not_available">not available</string>
     <string name="line_name_label">Line name:</string>
+    <string name="location_time_label">Time of location:</string>
+    <string name="saveTowerUnavaleble">save not avalable (wait all green)</string>
+    <string name="stopSessionButtonWithoutSaveTower">end collect towers</string>
 </resources>
