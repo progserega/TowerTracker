@@ -21,11 +21,21 @@ public class mLocation {
     private static mLocation lc = null;
     private static LocationManager locationManager = null;
     private static LocationListener locationListener = null;
-    private double lat=0;
-    private double lon=0;
-    private double accuracy=10000000;
-    private double ele=0;
-    private long time=0;
+    private double lat = 0;
+    private double lon = 0;
+    private double accuracy = 10000000;
+    private double ele = 0;
+    private long time = 0;
+
+    callback updateLocationCallBack = null;
+
+    interface callback {
+        void updateLocation(double lat, double lon, double accurate, double ele, long time);
+    }
+
+    public void registerCallback(callback updateLocation) {
+        this.updateLocationCallBack = updateLocation;
+    }
 
     public static mLocation getInstance(Context applicationcontext) {
         if (lc == null) {
@@ -36,8 +46,12 @@ public class mLocation {
         return lc;
     }
 
-    private void stopLocation() {
+    public void stopLocation() {
         // Remove the listener you previously added
+        /*if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+            return;
+        }
+        //else*/
         locationManager.removeUpdates(locationListener);
     }
 
@@ -58,6 +72,9 @@ public class mLocation {
                         accuracy=location.getAccuracy();
                         ele=location.getAltitude();
                         time=location.getTime();
+
+                        if (updateLocationCallBack!=null)
+                            updateLocationCallBack.updateLocation(lat, lon, accuracy, ele, time);
 
                     }
                     else
@@ -154,6 +171,8 @@ public class mLocation {
     {
         return lat;
     }
+    public double getEle() {return  ele; }
+    public long getTime() {return time; }
 
 
     private void msbox(String str,String str2)

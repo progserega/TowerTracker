@@ -12,15 +12,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class addTower extends AppCompatActivity {
+public class addTower extends AppCompatActivity implements mLocation.callback {
     private String line_name=null;
     private mLocation location = null;
     double lat=0;
     double lon=0;
-    double accuracy=0;
-
-
-
+    double accuracy=100000;
+    double ele=0;
+    long time=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +33,7 @@ public class addTower extends AppCompatActivity {
         lat=location.getLat();
         lon=location.getLon();
         accuracy=location.getAccuracy();
-        updateLocationStatus(lat,lon,accuracy);
+        updateLocation(lat,lon,accuracy,ele,time);
     }
       /**
      * Called when the user clicks the Send button
@@ -62,7 +61,9 @@ public class addTower extends AppCompatActivity {
             lat=location.getLat();
             lon=location.getLon();
             accuracy=location.getAccuracy();
-            updateLocationStatus(lat,lon,accuracy);
+            ele=location.getEle();
+            time=location.getTime();
+            updateLocation(lat,lon,accuracy,ele,time);
 
             msbox("message","success save '"+towerName+"' ("+lat+","+lon+","+accuracy+") to line: '"+line_name+"'");
 /*
@@ -83,7 +84,9 @@ public class addTower extends AppCompatActivity {
         }
     }
 
-    public void updateLocationStatus(double lat, double lon, double accuracy)
+
+    @Override
+    public void updateLocation(double lat, double lon, double accurate, double ele, long time)
     {
         // location:
         String label=lat+", "+lon;
@@ -127,4 +130,5 @@ public class addTower extends AppCompatActivity {
         dlgAlert.setCancelable(true);
         dlgAlert.create().show();
     }
+
 }
