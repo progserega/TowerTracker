@@ -25,4 +25,9 @@
     <string name="error">Error!</string>
     <string name="stopSessionButton">save and stop session</string>
     <string name="saveTower">save tower to line</string>
+    <string name="current_location_label">Current location:</string>
+    <string name="status_search">searching location...</string>
+    <string name="accuracy_label">Accuracy:</string>
+    <string name="not_available">not available</string>
+    <string name="line_name_label">Line name:</string>
 </resources>

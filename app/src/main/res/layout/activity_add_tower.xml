@@ -15,6 +15,56 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:text="@string/line_name_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tower_line_name_label"
+            android:textSize="14sp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:text="@string/not_available"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tower_line_name"
+            android:textAlignment="center" />
+
+        <TextView
+            android:text="@string/current_location_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tower_current_location_label"
+            android:textSize="18sp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tower_current_location"
+            android:text="@string/status_search"
+            android:textColor="@android:color/holo_red_dark"
+            android:textStyle="normal|bold"
+            android:textSize="18sp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:text="@string/accuracy_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tower_accuracy_label"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <TextView
+            android:text="@string/not_available"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tower_accuracy"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textColor="@android:color/holo_red_dark" />
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"

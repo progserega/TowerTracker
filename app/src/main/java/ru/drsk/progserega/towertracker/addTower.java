@@ -4,14 +4,23 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class addTower extends AppCompatActivity {
     private String line_name=null;
+    private mLocation location = null;
+    double lat=0;
+    double lon=0;
+    double accuracy=0;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +28,13 @@ public class addTower extends AppCompatActivity {
         setContentView(R.layout.activity_add_tower);
         Intent intent = getIntent();
         line_name = intent.getStringExtra(LineName.LINE_NAME);
+        TextView tv = (TextView) findViewById(R.id.tower_line_name);
+        tv.setText(line_name);
+        location = mLocation.getInstance(getApplicationContext());
+        lat=location.getLat();
+        lon=location.getLon();
+        accuracy=location.getAccuracy();
+        updateLocationStatus(lat,lon,accuracy);
     }
       /**
      * Called when the user clicks the Send button
@@ -43,7 +59,12 @@ public class addTower extends AppCompatActivity {
         else
         {
 
-            msbox("message","success save '"+towerName+"' to line: '"+line_name+"'");
+            lat=location.getLat();
+            lon=location.getLon();
+            accuracy=location.getAccuracy();
+            updateLocationStatus(lat,lon,accuracy);
+
+            msbox("message","success save '"+towerName+"' ("+lat+","+lon+","+accuracy+") to line: '"+line_name+"'");
 /*
         if (sqliteStorage.add_station_defect(1,1,towerName)==true)
         {
@@ -60,7 +81,38 @@ public class addTower extends AppCompatActivity {
             Log.d("addTower.saveTower()", "close activity");
             //finish();
         }
+    }
 
+    public void updateLocationStatus(double lat, double lon, double accuracy)
+    {
+        // location:
+        String label=lat+", "+lon;
+        TextView tv = (TextView) findViewById(R.id.tower_current_location);
+        tv.setText(label);
+        if (lat==0 || lon==0)
+        {
+            tv.setTextColor(Color.rgb(200,0,0));
+        }
+        else
+        {
+            tv.setTextColor(Color.rgb(0,200,0));
+        }
+        // accuracy:
+        label=accuracy+" метров";
+        tv = (TextView) findViewById(R.id.tower_accuracy);
+        tv.setText(label);
+        if (accuracy<15)
+        {
+            tv.setTextColor(Color.rgb(0,200,0));
+        }
+        else if(accuracy<40)
+        {
+            tv.setTextColor(Color.rgb(200,200,0));
+        }
+        else
+        {
+            tv.setTextColor(Color.rgb(200,0,0));
+        }
     }
     private void msbox(String str,String str2)
     {

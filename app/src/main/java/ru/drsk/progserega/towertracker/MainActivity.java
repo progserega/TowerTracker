@@ -14,7 +14,7 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
     static Boolean syncActive=false;
     public SqliteStorage sqliteStorage;
-    public Location location;
+    public mLocation location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        location = Location.getInstance(getApplicationContext());
+        location = mLocation.getInstance(getApplicationContext());
     }
 
 

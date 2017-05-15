@@ -21,4 +21,9 @@
     <string name="error">Ошибка!</string>
     <string name="stopSessionButton">Сохранить опору и завершить сбор опор для линии</string>
     <string name="saveTower">Сохранить опору в линию</string>
+    <string name="current_location_label">Текущие координаты:</string>
+    <string name="status_search">поиск местоположения...</string>
+    <string name="accuracy_label">Погрешность позиционирования:</string>
+    <string name="not_available">не доступно</string>
+    <string name="line_name_label">Имя линии:</string>
 </resources>
