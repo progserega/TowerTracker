@@ -12,7 +12,7 @@
     <string name="line_session">Сбор опор линии</string>
     <string name="action_settings">Настройки</string>
     <string name="towerNameLabel">Имя опоры</string>
-    <string name="towerTypeLabel">Тип опоры</string>
+    <string name="towerMaterialLabel">Материал опоры</string>
     <string name="wood">деревянная</string>
     <string name="save">Сохранить</string>
     <string name="enter_line_name_label">Введите имя линии:</string>

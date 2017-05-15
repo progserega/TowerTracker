@@ -115,10 +115,10 @@
             android:layout_weight="1">
 
             <TextView
-                android:text="@string/towerTypeLabel"
+                android:text="@string/towerMaterialLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/towerTypeLabel"
+                android:id="@+id/towerMaterialLabel"
                 android:layout_weight="1" />
 
             <Spinner
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/spinner"
                 android:layout_weight="1"
-                android:entries="@array/tower_type" />
+                android:entries="@array/tower_material" />
 
         </LinearLayout>
 
