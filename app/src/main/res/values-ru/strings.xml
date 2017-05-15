@@ -29,4 +29,7 @@
     <string name="location_time_label">Последнее обновление координат:</string>
     <string name="saveTowerUnavaleble">Сохранение невозможно - дождитесь лучших условий приёма (всё зелёное)</string>
     <string name="stopSessionButtonWithoutSaveTower">завершить сбор опор</string>
+    <string name="success">Успех!</string>
+    <string name="success_save">Данные успешно сохранены в базу!</string>
+    <string name="error_save_to_db">Ошибка сохранения данных в базу!</string>
 </resources>

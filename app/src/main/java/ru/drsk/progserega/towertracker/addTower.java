@@ -58,8 +58,8 @@ public class addTower extends AppCompatActivity implements mLocation.callback {
         {
             Log.e("addTower.saveTower()", "sqliteStorage.getInstance() error");
         }
-        EditText editText = (EditText) findViewById(R.id.towerName);
-        String towerName = editText.getText().toString();
+        EditText towerNameTE = (EditText) findViewById(R.id.towerName);
+        String towerName = towerNameTE.getText().toString();
 
         if(towerName.isEmpty())
         {
@@ -80,15 +80,15 @@ public class addTower extends AppCompatActivity implements mLocation.callback {
             int line_voltage=0;
             String tower_type="";
 
-
-
             if (sqliteStorage.add_tower(line_name,towerName,lat,lon,ele,time,tower_material,line_voltage,tower_type)==true)
             {
-                msbox("message","success save '"+towerName+"' to line: '"+line_name+"'");
+                msbox(getResources().getString(R.string.success),getResources().getString(R.string.success_save));
+                // очищаем имя опоры и выводим количество сохранённых опор:
+                towerNameTE.clearComposingText();
             }
             else
             {
-                msbox("message","Error save to db!");
+                msbox(getResources().getString(R.string.error),getResources().getString(R.string.error_save_to_db));
             }
 
 

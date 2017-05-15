@@ -28,4 +28,7 @@
     <string name="location_time_label">Time of location:</string>
     <string name="saveTowerUnavaleble">save not avalable (wait all green)</string>
     <string name="stopSessionButtonWithoutSaveTower">end collect towers</string>
+    <string name="success">Success!</string>
+    <string name="success_save">Data success save to db!</string>
+    <string name="error_save_to_db">Error save data to db!</string>
 </resources>
