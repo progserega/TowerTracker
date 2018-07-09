@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 public class selectSessionType extends AppCompatActivity {
+    public final static String LINE_TYPE = "Line04";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,4 +30,21 @@ public class selectSessionType extends AppCompatActivity {
         startActivity(intent);
 
     }
+    /**
+     * Called when the user clicks the vl_04_kv button
+     */
+    public void startLineSessionVl04(View view) {
+        Log.d("startLineSessionVl04()", "1");
+        // Do something in response to button
+        //Intent intent = new Intent(this, addStationBug.class);
+        Intent intent = new Intent(this, LineName.class);
+        intent.putExtra(LINE_TYPE, "Line04");
+            /*EditText editText = (EditText) findViewById(R.id.edit_message);
+            String message = editText.getText().toString();
+            intent.putExtra(EXTRA_MESSAGE, message);*/
+        Log.d("startLineSessionVl04()", "2");
+        startActivity(intent);
+
+    }
+
 }

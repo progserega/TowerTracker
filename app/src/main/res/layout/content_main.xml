@@ -38,7 +38,7 @@
         </LinearLayout>
 
         <Button
-            android:onClick="startSession"
+            android:onClick="startSession (MainActivity)"
             android:text="@string/start_session"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

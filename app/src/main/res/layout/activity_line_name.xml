@@ -30,11 +30,22 @@
             android:id="@+id/line_name"
             android:contentDescription="@string/line_name_desc" />
 
-        <Button
-            android:onClick="startAddTower"
-            android:text="@string/next"
+        <CheckBox
+            android:text="@string/searchNearLinesCbText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/nameLineSave" />
+            android:id="@+id/searchNearLinesId" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lineListPreview" />
+
+        <Button
+            android:onClick="startAddTower"
+            android:text="@string/selectBySpResBt"
+            android:layout_width="match_parent"
+            android:layout_height="27dp"
+            android:id="@+id/electBySpResbt" />
     </LinearLayout>
 </RelativeLayout>

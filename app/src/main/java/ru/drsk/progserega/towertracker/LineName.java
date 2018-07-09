@@ -11,11 +11,14 @@ import android.content.DialogInterface;
 
 public class LineName extends AppCompatActivity {
     public final static String LINE_NAME = "lineName";
+    private String line_type=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_line_name);
-        Log.d("LineName.onCreate()", "1");
+        Intent intent = getIntent();
+        line_type = intent.getStringExtra(selectSessionType.LINE_TYPE);
+        Log.d("LineName.onCreate(line_type="+line_type+")", "1");
     }
     /**
      * Called when the user clicks the Send button

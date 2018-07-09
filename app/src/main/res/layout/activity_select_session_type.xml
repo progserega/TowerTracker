@@ -11,21 +11,36 @@
     tools:context="ru.drsk.progserega.towertracker.selectSessionType">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="@string/new_defect_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:textAlignment="center" />
 
         <Button
-            android:onClick="startLineSession"
+            android:text="@string/bt_new_vl04_session"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            android:onClick="startLineSessionVl04 (selectSessionType)" />
+
+        <Button
+            android:text="@string/new_vl_6_10_kv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button2" />
+
+        <Button
+            android:onClick="startLineSession (selectSessionType)"
             android:text="@string/line_session"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/newLineButton" />
 
-        <Button
-            android:text="@string/tp_session"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/newTpButton" />
     </LinearLayout>
 </RelativeLayout>

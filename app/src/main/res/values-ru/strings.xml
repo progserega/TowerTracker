@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="start_session">Начать новый сбор</string>
-    <string name="app_name">Сборщик опор</string>
+    <string name="app_name">Листок осмотра</string>
     <string name="end_session">Завершить сбор</string>
     <string name="line_seassion">Сбор опор линии</string>
     <string name="tp_session">Сбор ТП</string>
@@ -32,4 +32,9 @@
     <string name="success">Успех!</string>
     <string name="success_save">Данные успешно сохранены в базу!</string>
     <string name="error_save_to_db">Ошибка сохранения данных в базу!</string>
+    <string name="new_defect_text">Регистрация дефекта</string>
+    <string name="bt_new_vl04_session">Vl 04 kV</string>
+    <string name="new_vl_6_10_kv">Vl 6-10 kV</string>
+    <string name="searchNearLinesCbText">Search in near lines</string>
+    <string name="selectBySpResBt">Select by Sp and Res</string>
 </resources>
