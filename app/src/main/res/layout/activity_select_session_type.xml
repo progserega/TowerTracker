@@ -23,11 +23,11 @@
             android:textAlignment="center" />
 
         <Button
-            android:text="@string/bt_new_vl04_session"
+            android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button"
-            android:onClick="startLineSessionVl04 (selectSessionType)" />
+            android:onClick="startLineSessionVl04"
+            android:text="@string/bt_new_vl04_session" />
 
         <Button
             android:text="@string/new_vl_6_10_kv"
@@ -36,11 +36,11 @@
             android:id="@+id/button2" />
 
         <Button
-            android:onClick="startLineSession (selectSessionType)"
-            android:text="@string/line_session"
+            android:id="@+id/newLineButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/newLineButton" />
+            android:onClick="startLineSession"
+            android:text="@string/line_session" />
 
     </LinearLayout>
 </RelativeLayout>

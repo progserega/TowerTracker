@@ -36,16 +36,20 @@
             android:layout_height="wrap_content"
             android:id="@+id/searchNearLinesId" />
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/lineListPreview" />
-
         <Button
-            android:onClick="startAddTower"
-            android:text="@string/selectBySpResBt"
+            android:id="@+id/electBySpResbt"
             android:layout_width="match_parent"
-            android:layout_height="27dp"
-            android:id="@+id/electBySpResbt" />
+            android:layout_height="wrap_content"
+            android:onClick="startAddTower"
+            android:text="@string/selectBySpResBt" />
+
+        <ListView
+            android:id="@+id/lineListPreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
+
     </LinearLayout>
 </RelativeLayout>

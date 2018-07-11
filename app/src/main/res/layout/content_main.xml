@@ -38,11 +38,11 @@
         </LinearLayout>
 
         <Button
-            android:onClick="startSession (MainActivity)"
-            android:text="@string/start_session"
+            android:id="@+id/startSessionButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/startSessionButton" />
+            android:onClick="startSession"
+            android:text="@string/start_session" />
 
         <Button
             android:text="@string/send_data"
